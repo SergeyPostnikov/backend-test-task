@@ -13,7 +13,6 @@ from src.app.app import app
 
 @pytest.fixture(scope="session")
 def event_loop() -> AbstractEventLoop:
-    """Ивент луп"""
     return asyncio.get_event_loop()
 
 
@@ -25,7 +24,6 @@ async def init_db() -> None:
 
 @pytest.fixture(autouse=True)
 async def drop_db() -> None:
-    """Дропнуть бд перед каждым тестом"""
     if not settings.mongo.db_name.lower().endswith("test"):
         raise RuntimeError
 
